@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/front/common :: headSrc('우수작 전시 페이지')">
+    
+</head>
+<body class="stretched" data-menu-breakpoint="1200">
+	<th:block th:replace="fragments/front/common :: transPart"></th:block>
+	<div id="wrapper">
+		 <header id="header" class="transparent-header dark" th:replace="fragments/front/common :: headMenu('white')">
+         
+        </header>
+        <section class="page-title bg-transparent page-title-center">
+			<div class="container">
+				<div class="page-title-row py-4">
+					<nav aria-label="breadcrumb">
+						<ol class="breadcrumb mt-0 mb-4" style="--bs-breadcrumb-divider: '&#62;'; --bs-breadcrumb-item-padding-x:1rem">
+							<li class="breadcrumb-item"><a href="#"><i class="uil uil-home"></i></a></li>
+							<li class="breadcrumb-item"><a href="#">우수작 전시</a></li>
+							<li class="breadcrumb-item active" aria-current="page">우수작 상세페이지</li>
+						</ol>
+					</nav>
+					<div class="page-title-content">
+						<h1>우수작전시</h1>
+						<span>우수작을 감상해 보세요.</span>
+
+						<div class="page-title-buttons mt-5">
+							<button class="button button-border rounded px-5 mb-0 share-btn" data-scrollto="#content">수상작 감상하기<i class="bi-box-arrow-in-down"></i></button>
+							<button id="btnKakao" th:onclick="shareKakao([[${ex.name}]]);"  class="button button-border rounded px-5 mb-0 share-btn">카카오톡공유하기<img src="/front/images/sns/k.png"/></button>
+							<button onclick="shareFacebook();" class="button button-border rounded px-5 mb-0 share-btn">페이스북공유하기<img src="/front/images/sns/f.png"/></button>
+							<button onclick="copyUrl();" class="button button-border rounded px-5 mb-0 share-btn">링크 복사하기<i class="bi-share"></i></button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section id="content">
+			<div class="content-wrap">
+				<div class="container">
+					<div class="masonry-thumbs grid-container row row-cols-3" data-lightbox="gallery">
+						<a th:each="e:${ex.images}" class="grid-item" 
+						th:href="${e.imageRoad}" data-lightbox="gallery-item">
+						<img th:src="@{${e.imageRoad}}" alt="전시회출품작"></a>
+					</div>
+					<div class="row col-mb-50 mt-10">
+						<div class="col-12">
+
+							<div class="row flex-lg-row-reverse g-5">
+								<div class="col-lg-12">
+									<div class="row text-center">
+										<div class="col-4 border-top py-3">
+											<h5 class="mb-1">작가</h5>
+											<p class="text-medium op-08 mb-0" th:text="${ex.author}">John Doe</p>
+										</div>
+
+										<div class="col-4 border-top py-3">
+											<h5 class="mb-1">작품명</h5>
+											<p class="text-medium op-08 mb-0" th:text="${ex.name}">17th March 2022</p>
+										</div>
+
+										<div class="col-4 border-top py-3">
+											<h5 class="mb-1">수상 명</h5>
+											<p class="text-medium op-08 mb-0" th:text="${ex.prizeName}">17th March 2022</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			<!-- 	<div class="py-4 mt-6 border-top border-bottom border-default">
+					<div class="container">
+						<div class="row justify-content-between gx-0">
+							<div class="col">
+								<a href="#" class="d-inline-flex align-items-center text-dark h-text-color"><i class="uil uil-angle-left-b fs-3 me-1"></i><span>Previous Project</span></a>
+							</div>
+							<div class="col text-end">
+								<a href="#" class="d-inline-flex align-items-center text-dark h-text-color"><span>Next Project</span><i class="uil uil-angle-right-b fs-3 ms-1"></i></a>
+							</div>
+						</div>
+					</div>
+				</div>
+ -->
+				<div class="section mt-0 footer-stick">
+					<div class="container">
+
+						<h4 class="fs-4 fw-medium text-center">연관작품</h4>
+
+						<div id="related-portfolio" class="owl-carousel portfolio-carousel carousel-widget" data-margin="30" data-nav="false" data-autoplay="5000" data-items-xs="1" data-items-sm="2" data-items-md="3" data-items-lg="4" data-items-xl="4">
+
+							<div class="oc-item" th:each="r:${re}">
+								<div class="portfolio-item">
+									<div class="portfolio-image">
+										<a th:href="@{|/contest/excellentDetail/${r.id}|}">
+											<img style="height:300px;" th:src="@{${r.firstImage}}" alt="대표이미지">
+										</a>
+										<div class="bg-overlay" data-lightbox="gallery">
+											<div class="bg-overlay-content dark" data-hover-animate="fadeIn">
+												<a th:each="i:${r.slideImages}" th:href="${i}" class="d-none" data-lightbox="gallery-item"></a>
+											</div>
+											<div class="bg-overlay-bg dark" data-hover-animate="fadeIn"></div>
+										</div>
+									</div>
+									<div class="portfolio-desc">
+									<h3><a th:href="@{|/contest/excellentDetail/${r.id}|}"># [[${r.name}]]</a></h3>
+									<span><a th:href="@{|/contest/excellentDetail/${r.id}|}"># [[${r.author}]]</a> <a th:href="@{|/contest/excellentDetail/${r.id}|}"># [[${r.prizeName}]]</a> <a th:href="@{|/contest/excellentDetail/${r.id}|}"># [[${r.subject}]]</a></span>
+								</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<th:block th:replace="fragments/front/common :: footerSrc"></th:block>
+
+	</div>
+
+	<th:block th:replace="fragments/front/common :: scriptSrc"></th:block>
+	<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+	<script>
+	var thisUrl = document.URL;
+	function shareFacebook(){
+		var url = "http://www.facebook.com/sharer/sharer.php?u="+encodeURIComponent(thisUrl);
+        window.open(url, "", "width=486, height=286");
+	}
+	function shareKakao(title){
+		var snsTitle = title;
+		 
+	    // 사용할 앱의 JavaScript 키 설정
+	    Kakao.init('d143f2ee67453c34ac47361f1608e74b');
+	    
+	    // 카카오링크 버튼 생성
+	    Kakao.Link.createDefaultButton({
+	        container: '#btnKakao', // HTML에서 작성한 ID값
+	        objectType: 'feed',
+	        content: {
+	        title: snsTitle, // 보여질 제목
+	        description: '대한민국 우표 전시회 출품작', // 보여질 설명
+	        imageUrl: thisUrl, // 콘텐츠 URL
+	        link: {
+	            mobileWebUrl: thisUrl,
+	            webUrl: thisUrl
+	        }
+	        }
+	    });
+	}
+	
+	function shareKakaoTwo(title){
+		shareKakao(title);
+	}
+	function copyUrl(){
+	   var url = '';
+	   var textarea = document.createElement("textarea");
+	   document.body.appendChild(textarea);
+	   url = thisUrl;
+	   textarea.value = url;
+	   textarea.select();
+	   document.execCommand("copy");
+	   document.body.removeChild(textarea);
+	   alert("링크가 복사되었습니다. 필요하신 곳에 붙여넣기 하세요!")
+	}
+	</script>
+</body>
+</html>
