@@ -93,7 +93,12 @@ public class AIController {
 			model.addAttribute("animal", animal);
 			model.addAttribute("action", action);
 			model.addAttribute("src", path);
-			return "front/ai/processingTwo";
+			if("wolf".equals(animal) || "eagle".equals(animal)) {
+				
+				return "front/ai/processingTwoMore";
+			}else {
+				return "front/ai/processingTwo";
+			}
 		}
 	}
 	
