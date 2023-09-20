@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/front/common :: headSrc('AI PROMPT')">
+
+</head>
+<body class="stretched" data-menu-breakpoint="1200">
+	<div id="wrapper">
+		<section id="content" class="min-vh-100"
+		style="background:url('/front/images/bg_p.jpg'); background-repeat:no-repeat; background-size:cover; background-position:center;">
+			<div class="container">
+				<div class="ai-form-wrap min-vh-100">
+					<div class="row justify-content-center">
+						<div class="col-12">
+							<ul
+								class="process-steps row col-mb-30 justify-content-center mb-4">
+								<li class="col-sm-6 col-lg-2 "><a href="javascript:void(0)"
+									class="i-style rounded-circle i-alt">1</a>
+									<h5>함께할 동물 선택</h5></li>
+								<li class="col-sm-6 col-lg-2"><a href="javascript:void(0)"
+									class="i-style rounded-circle i-alt mx-auto">2</a>
+									<h5>동작에 대한 입력</h5></li>
+								<li class="col-sm-6 col-lg-2"><a href="javascript:void(0)"
+									class="i-style rounded-circle i-alt mx-auto">3</a>
+									<h5>장소에 대한 입력</h5></li>
+								<li class="col-sm-6 col-lg-2"><a href="javascript:void(0)"
+									class="i-style rounded-circle i-alt mx-auto">4</a>
+									<h5>환경에 대한 입력</h5></li>
+								<li class="col-sm-6 col-lg-2 "><a href="javascript:void(0)"
+									class="i-style rounded-circle i-alt mx-auto">5</a>
+									<h5>원하는 스타일 입력</h5></li>
+								<li class="col-sm-6 col-lg-2 active"><a href="javascript:void(0)"
+									class="i-style rounded-circle i-alt mx-auto bg-color">6</a>
+									<h5>나만의 우표 생성</h5></li>		
+							</ul>
+						</div>
+						<div class="col-lg-5">
+							<div class="row car-list btn-group">
+								<img style="box-shadow:0px 5px 5px rgba(0,0,0,0.5);padding:0px;" th:src="@{${src}}" alt="Image">
+								<div class="col-12 text-center mt-5">
+									<button type="button" onclick="location.href='/ai/prompt'" 
+										class="btn btn-success btn-lg">처음으로 돌아가기</button>
+								</div>	
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+
+	<th:block th:replace="fragments/front/common :: scriptSrc"></th:block>
+
+</body>
+</html>

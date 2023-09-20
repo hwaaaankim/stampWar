@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/front/common :: headSrc('AI PROMPT')">
+
+</head>
+<body class="stretched" data-menu-breakpoint="1200">
+	<div id="wrapper">
+		<section id="content" class="min-vh-100"
+		style="background:url('/front/images/bg_p.jpg'); background-repeat:no-repeat; background-size:cover; background-position:center;">
+			<div class="container">
+				<div class="ai-form-wrap min-vh-100">
+					<div class="row justify-content-between">
+						<div class="col-12">
+							<ul
+								class="process-steps row col-mb-30 justify-content-center mb-4">
+								<li class="col-sm-6 col-lg-2 "><a href="javascript:void(0)"
+									class="i-style rounded-circle i-alt mx-auto">1</a>
+									<h5>함께할 동물 선택</h5></li>
+								<li class="col-sm-6 col-lg-2 active"><a href="javascript:void(0)"
+									class="i-style rounded-circle i-alt mx-auto bg-color">2</a>
+									<h5>동작에 대한 입력</h5></li>
+								<li class="col-sm-6 col-lg-2"><a href="javascript:void(0)"
+									class="i-style rounded-circle i-alt mx-auto">3</a>
+									<h5>장소에 대한 입력</h5></li>
+								<li class="col-sm-6 col-lg-2"><a href="javascript:void(0)"
+									class="i-style rounded-circle i-alt mx-auto">4</a>
+									<h5>환경에 대한 입력</h5></li>
+								<li class="col-sm-6 col-lg-2"><a href="javascript:void(0)"
+									class="i-style rounded-circle i-alt mx-auto">5</a>
+									<h5>원하는 스타일 입력</h5></li>
+								<li class="col-sm-6 col-lg-2"><a href="javascript:void(0)"
+									class="i-style rounded-circle i-alt mx-auto">6</a>
+									<h5>나만의 우표 생성</h5></li>		
+							</ul>
+						</div>
+						<div class="col-lg-8 mt-10">
+							
+							<form class="row" action="/ai/processingTwo" method="post"
+								enctype="multipart/form-data">
+
+								<div class="col-12">
+									<label># 나의 주인공이 어떤 동작을 하고 있을까요? :</label>
+									<div class="row car-list btn-group">
+										<label class="car-image pe-0 col-6 col-md-3">
+											<div class="ms-0">
+												<input type="radio" name="action" class="required" value="sitting">
+												앉아있다(Sitting) <img src="/front/images/ai/sit.png" alt="Image">
+											</div>
+										</label> <label class="car-image px-0 col-6 col-md-3">
+											<div>
+												<input type="radio" name="action" class="required" value="running">
+												달리다(Running) <img src="/front/images/ai/run.png" alt="Image">
+											</div>
+										</label> <label class="car-image px-0 col-6 col-md-3">
+											<div class="ms-3 ms-md-2">
+												<input type="radio" name="action" class="required" value="flying">
+												날다(Flying) <img src="/front/images/ai/fly.png" alt="Image">
+											</div>
+										</label> <label class="car-image px-0 col-6 col-md-3">
+											<div>
+												<input type="radio" name="action" class="required" value="standing">
+												서있다(Stading) <img src="/front/images/ai/stand.png" alt="Image">
+											</div>
+											<input type="hidden" name="animal" th:value="${animal}">
+										</label>
+									</div>
+								</div>
+								<div class="col-12 text-center mt-5">
+									<button type="submit" 
+										class="btn btn-success btn-lg">동작 이야기하기</button>
+								</div>
+							</form>
+						</div>
+						<div class="col-lg-3 mt-5" style="margin-right:20px;">
+							
+							<form id="car-rental" class="row" action="#" method="post"
+								enctype="multipart/form-data">
+
+								<div class="col-12">
+									<label># 함께할 동물 AI Version :</label>
+									<div class="row car-list btn-group">
+										<img th:src="@{${src}}" alt="Image">	
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+
+	<th:block th:replace="fragments/front/common :: scriptSrc"></th:block>
+
+</body>
+</html>

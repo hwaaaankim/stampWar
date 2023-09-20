@@ -12,4 +12,10 @@ public class AdminController {
 		
 		return "administration/login";
 	}
+	
+	@RequestMapping("/loginProcess")
+	public String loginProcess() {
+		
+		return "administration/login";
+	}
 }

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/front/common :: headSrc('AI PROMPT')">
+
+</head>
+<body class="stretched" data-menu-breakpoint="1200">
+	<div id="wrapper">
+		<section id="content" class="min-vh-100"
+		style="background:url('/front/images/bg_p.jpg'); background-repeat:no-repeat; background-size:cover; background-position:center;">
+			<div class="container">
+				<div class="ai-form-wrap min-vh-100">
+					<div class="row justify-content-between">
+						<div class="col-12">
+							<ul
+								class="process-steps row col-mb-30 justify-content-center mb-4">
+								<li class="col-sm-6 col-lg-2 "><a href="javascript:void(0)"
+									class="i-style rounded-circle i-alt">1</a>
+									<h5>함께할 동물 선택</h5></li>
+								<li class="col-sm-6 col-lg-2"><a href="javascript:void(0)"
+									class="i-style rounded-circle i-alt mx-auto bg-color">2</a>
+									<h5>동작에 대한 입력</h5></li>
+								<li class="col-sm-6 col-lg-2 active"><a href="javascript:void(0)"
+									class="i-style rounded-circle i-alt mx-auto mx-auto">3</a>
+									<h5>장소에 대한 입력</h5></li>
+								<li class="col-sm-6 col-lg-2"><a href="javascript:void(0)"
+									class="i-style rounded-circle i-alt mx-auto">4</a>
+									<h5>환경에 대한 입력</h5></li>
+								<li class="col-sm-6 col-lg-2"><a href="javascript:void(0)"
+									class="i-style rounded-circle i-alt mx-auto">5</a>
+									<h5>원하는 스타일 입력</h5></li>
+								<li class="col-sm-6 col-lg-2"><a href="javascript:void(0)"
+									class="i-style rounded-circle i-alt mx-auto">6</a>
+									<h5>나만의 우표 생성</h5></li>		
+							</ul>
+						</div>
+						<div class="col-lg-8 mt-10">
+							
+							<form class="row" action="/ai/processingFour" method="post">
+								
+								<div class="col-12">
+									<label># 어떤 스타일의 우표를 좋아하세요 ? :</label>
+									<div class="row car-list btn-group">
+										<label class="car-image pe-0 col-6 col-md-3">
+											<div class="ms-0">
+												<input type="radio" name="prompt" class="required" value="real">
+												실제같은(Real) <img src="/front/images/ai/d.png" alt="Image">
+											</div>
+										</label> <label class="car-image px-0 col-6 col-md-3">
+											<div>
+												<input type="radio" name="prompt" class="required" value="pencil">
+												펜그림 같은(Pencil Sketch) <img src="/front/images/ai/b.png" alt="Image">
+											</div>
+										</label> <label class="car-image px-0 col-6 col-md-3">
+											<div class="ms-3 ms-md-2">
+												<input type="radio" name="prompt" class="required" value="anim">
+												만화같은(Animative) <img src="/front/images/ai/w.png" alt="Image">
+											</div>
+										</label> <label class="car-image px-0 col-6 col-md-3">
+											<div>
+												<input type="radio" name="prompt" class="required" value="logo">
+												장난감 같은(Toy Style) <img src="/front/images/ai/e.png" alt="Image">
+											</div>
+										</label>
+										<input type="hidden" name="animal" th:value="${animal}">
+										<input type="hidden" name="action" th:value="${action}">
+										<input type="hidden" name="point" th:value="${point}">
+										<input type="hidden" name="environ" th:value="${environ}">
+									</div>
+								</div>
+								
+								<div class="col-12 text-center mt-5">
+									<button type="submit" 
+										class="btn btn-success btn-lg">주인공 생성하기</button>
+								</div>
+							</form>
+						</div>
+						<div class="col-lg-3 mt-5" style="margin-right:20px;">
+							
+							<form id="car-rental" class="row" action="#" method="post"
+								enctype="multipart/form-data">
+
+								<div class="col-12">
+									<label># 나의 주인공이 어떤 환경에 있을까요? :</label>
+									<div class="row car-list btn-group">
+										<img th:src="@{${src}}" alt="Image">	
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+
+	<th:block th:replace="fragments/front/common :: scriptSrc"></th:block>
+
+</body>
+</html>

@@ -7,7 +7,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.dev.stampWar.model.EventParticipant;
+import com.dev.stampWar.model.EventTwo;
 import com.dev.stampWar.service.EventParticipantService;
+import com.dev.stampWar.service.PartTwoService;
 
 @Controller
 @RequestMapping("/event")
@@ -15,6 +17,9 @@ public class EventController {
 
 	@Autowired
 	EventParticipantService eventParticipantService;
+	
+	@Autowired
+	PartTwoService partTwoService;
 	
 	@RequestMapping("/comment")
 	public String comment() {
@@ -26,6 +31,23 @@ public class EventController {
 	@ResponseBody
 	public String eventParicipant(EventParticipant eventParticipant) {
 		eventParticipantService.eventInsert(eventParticipant);
+		
+		StringBuffer sb = new StringBuffer();
+		String msg = "이벤트 신청이 완료 되었습니다.";
+
+		sb.append("alert('" + msg + "');");
+		sb.append("location.href='/index'");
+		sb.append("</script>");
+		sb.insert(0, "<script>");
+
+		return sb.toString();
+		
+	}
+	
+	@PostMapping("/eventTwoParticipant")
+	@ResponseBody
+	public String eventTwoParticipant(EventTwo eventTwo) {
+		partTwoService.eventInsert(eventTwo);
 		
 		StringBuffer sb = new StringBuffer();
 		String msg = "이벤트 신청이 완료 되었습니다.";

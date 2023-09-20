@@ -10,7 +10,7 @@ logging:
 # 동작 환경 설정
 spring:
   profiles:
-    active: test
+    active: prod
 server:
   servlet:
     session:
@@ -28,7 +28,7 @@ spring:
   datasource:
     driver-class-name: org.mariadb.jdbc.Driver
     password: ghksrka3849!
-    url: jdbc:mariadb://43.201.82.178:3306/forecast?useUnicode=true&characterEncoding=utf8
+    url: jdbc:mariadb://43.201.82.178:3306/stamp?useUnicode=true&characterEncoding=utf8
     username: root
     hikari:
       connectionTimeout: 30000

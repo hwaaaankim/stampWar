@@ -29,7 +29,7 @@ public class WebSecurityConfig {
     		"/**"
     		};
     private final String[] adminsUrls = {
-    		"/admin/**", 
+    		"/ai/**", 
     		};
     
     @Bean   
@@ -40,22 +40,24 @@ public class WebSecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-        	.httpBasic()
-        		.disable()
 			.csrf()
 				.disable()
 			.authorizeRequests()
-				.requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()	
-	    		.antMatchers(HttpMethod.DELETE).hasRole("ADMIN")
-	    		.antMatchers(adminsUrls).hasRole("ADMIN")
-	    		.antMatchers(visitorsUrls).permitAll()
-	    		.anyRequest()
-	    		.authenticated()
+				.antMatchers(adminsUrls).hasAuthority("ROLE_ADMIN")
+				.antMatchers(visitorsUrls).permitAll()
+			.anyRequest().authenticated()	
+//			.authorizeRequests()
+//				.requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()	
+//	    		.antMatchers(HttpMethod.DELETE).hasRole("ADMIN")
+//	    		.antMatchers(adminsUrls).hasRole("ADMIN")
+//	    		.antMatchers(visitorsUrls).permitAll()
+//	    		.anyRequest()
+//	    		.authenticated()
     		.and()
 	        .formLogin()
 				.loginPage("/admin/login")
 				.loginProcessingUrl("/admin/loginProcess")
-				.defaultSuccessUrl("/admin/index")
+				.defaultSuccessUrl("/ai/prompt")
 			.and()
 			.logout()
 				.logoutUrl("/logout")
