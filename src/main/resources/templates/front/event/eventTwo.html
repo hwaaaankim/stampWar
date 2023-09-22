@@ -53,7 +53,7 @@
 				<div class="container">
 
 					<div class="row justify-content-center">
-						<div class="col-lg-8">
+						<div class="col-lg-10">
 							<form class="row" action="/event/eventTwoParticipant" onsubmit="return formCheck();" method="post"
 								enctype="multipart/form-data">
 								<div class="col-12">
@@ -65,20 +65,24 @@
 											</div>
 										</div>
 									</div>
-									<div class="car-list btn-group justify-content-between">
-										<span class="stamp-wrap"> <input type="radio"
-											name="stamp" class="required" value="kim"> 김상옥 <img
-											src="/front/images/event/1.gif" alt="Image">
-										</span> <span class="stamp-wrap"> <input type="radio"
-											name="stamp" class="required" value="you"> 유관순 <img
-											src="/front/images/event/3.gif" alt="Image">
-										</span> <span class="stamp-wrap"> <input type="radio"
+									<div class="car-list btn-group">
+										<div class="stamp-wrap"> <input type="radio" id="kim"
+											name="stamp" class="required" value="kim"> 김상옥 
+											<label for="kim"><img src="/front/images/event/1.gif" alt="Image"></label>
+										</div> 
+										<div class="stamp-wrap"> <input type="radio" id="you"
+											name="stamp" class="required" value="you"> 유관순 
+											<label for="you"><img src="/front/images/event/3.gif" alt="Image"></label>
+										</div> 
+										<div class="stamp-wrap"> <input type="radio" id="frank"
 											name="stamp" class="required" value="frank"> 프랭크 윌리엄
-											스코필드 <img src="/front/images/event/4.gif" alt="Image">
-										</span> <span class="stamp-wrap"> <input type="radio"
-											name="stamp" class="required" value="hong"> 홍영식 <img
-											src="/front/images/event/2.gif" alt="Image">
-										</span>
+											스코필드
+											<label for="frank"> <img src="/front/images/event/4.gif" alt="Image"></label>
+										</div> 
+										<div class="stamp-wrap"> <input type="radio" id="hong"
+											name="stamp" class="required" value="hong"> 홍영식 
+											<label for="hong"> <img src="/front/images/event/2.gif" alt="Image"></label>
+										</div>
 									</div>
 								</div>
 								<div class="col-12 mt-5">
@@ -118,7 +122,26 @@
 
 							</form>
 						</div>
-
+						<div class="container">
+							<div class="row">
+								<div class="col-3">
+									<img style="box-shadow:0px 5px 5px rgba(0,0,0,0.5);" class="img-fluid" src="/front/images/r3.jpg">
+								</div>
+								
+								<div class="col-3">
+									<img style="box-shadow:0px 5px 5px rgba(0,0,0,0.5);" class="img-fluid" src="/front/images/r1.jpg">
+								</div>
+								
+								<div class="col-3">
+									<img style="box-shadow:0px 5px 5px rgba(0,0,0,0.5);" class="img-fluid" src="/front/images/r4.jpg">
+								</div>
+								
+								<div class="col-3">
+									<img style="box-shadow:0px 5px 5px rgba(0,0,0,0.5);" class="img-fluid" src="/front/images/r2.jpg">
+								</div>
+							</div>	
+						</div>
+						
 					</div>
 
 				</div>

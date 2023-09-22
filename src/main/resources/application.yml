@@ -14,9 +14,9 @@ spring:
 server:
   servlet:
     session:
-      timeout: 1440m      # 60m * 24h * 30d
+      timeout: 43200m      # 60m * 24h * 30d
       cookie:
-        max-age: 1440m    # 60m * 24h * 30d
+        max-age: 43200m    # 60m * 24h * 30d
         name: SID
         http-only: true
         secure: true
