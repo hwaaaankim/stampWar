@@ -30,4 +30,16 @@ public class VideoController {
 		
 		return "front/video/videoFour";
 	}
+	
+	@RequestMapping("/videoFive")
+	public String videoFive() {
+		
+		return "front/video/videoFive";
+	}
+	
+	@RequestMapping("/videoSeven")
+	public String videoSeven() {
+		
+		return "front/video/videoSeven";
+	}
 }
