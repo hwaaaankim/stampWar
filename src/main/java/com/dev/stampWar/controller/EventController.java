@@ -21,12 +21,6 @@ public class EventController {
 	@Autowired
 	PartTwoService partTwoService;
 	
-	@RequestMapping("/comment")
-	public String comment() {
-		
-		return "front/event/comment";
-	}
-	
 	@PostMapping("/eventParticipant")
 	@ResponseBody
 	public String eventParicipant(EventParticipant eventParticipant) {
